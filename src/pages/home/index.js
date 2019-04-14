@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import Avatar from './avatar';
 
 export default class Home extends Component {
   render() {
     return (
-      <h1>HOME PAGE</h1>
+      <div class='page' id='homepage'>
+        <h1>HOME PAGE</h1>
+        <Avatar name='Nnamdi Azikwe'/>
+      </div>
     )
   }
 }

@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Header extends Component {
   render() {
     return (
-      <h1>HEADER</h1>
+      <header>
+        <Link to='/'>
+          Home
+        </Link>
+        <Link to='/my-profile'>
+          dashboard
+        </Link>
+      </header>
     )
   }
 }
