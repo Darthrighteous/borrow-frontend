@@ -1,8 +1,32 @@
 #homepage {
-  .avatar-ctx {
-    .avatar-image {
-      height: 10em;
-      width: 10em;
+  border: 1px solid blue;
+  text-align: center;
+
+  .avatar-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .avatar-ctx {
+      border: 1px solid black;
+      margin: 2em;
+      width: 11em;
+      text-align: center;
+
+      .avatar-image {
+        border: 1px solid red;
+        border-radius: 50%;
+        height: 10em;
+        width: 10em;
+      }
+
+      .info-item {
+        font-size: 0.8em;
+      }
+
+      .title {
+        font-size: 1em;
+      }
     }
   }
 }

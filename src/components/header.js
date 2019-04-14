@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 export default class Header extends Component {
   render() {
     return (
-      <header>
+      <header className='app-header'>
         <Link to='/'>
-          Home
+          Borrow
         </Link>
         <Link to='/my-profile'>
           dashboard

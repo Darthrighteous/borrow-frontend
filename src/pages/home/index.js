@@ -4,9 +4,13 @@ import Avatar from './avatar';
 export default class Home extends Component {
   render() {
     return (
-      <div class='page' id='homepage'>
-        <h1>HOME PAGE</h1>
-        <Avatar name='Nnamdi Azikwe'/>
+      <div className='page' id='homepage'>
+        <h1>Select a Profile</h1>
+        <div className='avatar-list'>
+          <Avatar name='Nnamdi Azikwe' score={750} income={10000} expenses={5000}/>
+          <Avatar name='Bill Gates' score={750} income={10000} expenses={5000}/>
+          <Avatar name='Tahmir Mardling' score={750} income={10000} expenses={5000}/>
+        </div>
       </div>
     )
   }
