@@ -17,11 +17,23 @@ html {
 }
 
 body {
-  background: yellow;
-  max-width: 79em;
   margin: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  #root {
+    height: 100vh;
+    background: no-repeat center url('../images/background.jpeg');
+    background-color: rgba(0, 0, 0, 1);
+    background-size: cover;
+
+    .app-ctx {
+      background-color: rgba(255, 255, 255, 0.5);
+      height: 100vh;
+      max-width: 79em;
+      margin: auto;
+    }
+  }
 }
 
 code {

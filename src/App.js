@@ -8,14 +8,14 @@ const { HomePage, ProfilePage, FourZeroFour } = Pages
 
 const App = () => (
   <Router>
-    <Fragment>
+    <div className="app-ctx">
       <Header />
       <Switch>
         <Route exact path='/' component={HomePage}/>
         <Route path='/my-profile' component ={ProfilePage} />
         <Route component={FourZeroFour}/>
       </Switch>
-    </Fragment>
+    </div>
   </Router>
 )
 
