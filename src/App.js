@@ -11,13 +11,15 @@ const { HomePage, ProfilePage, FourZeroFour } = Pages
 const App = () => (
   <Provider store={store}>
     <Router>
-      <div className="app-ctx">
-        <Header />
-        <Switch>
-          <Route exact path='/' component={HomePage}/>
-          <Route path='/my-profile' component ={ProfilePage} />
-          <Route component={FourZeroFour}/>
-        </Switch>
+      <div className='overlay'>
+        <div className="app-ctx">
+          <Header />
+          <Switch>
+            <Route exact path='/' component={HomePage}/>
+            <Route path='/my-profile' component ={ProfilePage} />
+            <Route component={FourZeroFour}/>
+          </Switch>
+        </div>
       </div>
     </Router>
   </Provider>
