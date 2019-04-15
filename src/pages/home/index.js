@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Avatar from './avatar';
+import Avatar from '../../components/avatar';
 
 export default class Home extends Component {
   render() {

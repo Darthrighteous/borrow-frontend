@@ -1,5 +1,10 @@
-@import './header.scss';
+@import './header';
+@import './avatar';
+@import './loansummary';
+
 @import './homepage';
+@import './profile';
+
 
 * {
   box-sizing: border-box;

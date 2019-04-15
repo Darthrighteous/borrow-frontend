@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-import avatar from '../../assets/images/avatar.png';
+import avatar from '../assets/images/avatar.png';
 
 const Avatar = (props) => {
   const { name, score, income, expenses } = props

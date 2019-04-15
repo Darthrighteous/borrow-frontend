@@ -10,56 +10,5 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-
-    .avatar-ctx {
-      background: white;
-      border: 1px solid rgb(158, 158, 158);
-      border-radius: 0.5em;
-      cursor: pointer;
-      margin: 1.5em;
-      overflow: hidden;
-      transition: all .2s ease-in-out;
-      width: 12.5em;
-
-      &:hover {
-        transform: scale(1.1);
-      }
-
-      .avatar-image {
-        height: 8.5em;
-        width: 13em;
-      }
-
-      .avatar-info {
-        padding: 0.5em;
-        .info-block {
-          display: flex;
-          flex-direction: column;
-          margin: 0.5em;
-        }
-        .income-info {
-          display: flex;
-        }
-        .info-item {
-          line-height: 1em;
-        }
-        .label, .suffix {
-          color: hsl(214, 7%, 47%);
-          font-size: 0.5em;
-          text-transform: uppercase;
-        }
-        .suffix {
-          color: hsl(214, 7%, 20%)
-        }
-        .name {
-          text-transform: uppercase;
-          font-size: 0.8em;
-        }
-        .score {
-          font-weight: 600;
-          font-size: 1.1em;
-        }
-      }
-    }
   }
 }
