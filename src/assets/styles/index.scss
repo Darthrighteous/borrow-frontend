@@ -1,6 +1,7 @@
 @import './header';
 @import './avatar';
 @import './loansummary';
+@import './modal';
 
 @import './homepage';
 @import './profile';
@@ -27,13 +28,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   #root {
-    height: 100vh;
     background: no-repeat center url('../images/background.jpeg');
     background-color: rgba(0, 0, 0, 1);
     background-size: cover;
 
     .app-ctx {
-      background-color: rgba(255, 255, 255, 0.5);
+      background-color: rgba(255, 255, 255, 0.8);
       height: 100vh;
       max-width: 79em;
       margin: auto;

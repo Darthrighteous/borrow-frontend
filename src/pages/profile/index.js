@@ -2,13 +2,18 @@ import React, { Component } from 'react';
 
 import Avatar from '../../components/avatar';
 import LoanSummary from './loansummary';
+import LoanModal from './loanmodal';
 
 export default class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tab: 'history'
+      tab: 'history',
+      isModalOpen: false
     };
+
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   switchTabs(title) {
@@ -17,9 +22,31 @@ export default class Profile extends Component {
     })
   }
 
+  openModal() {
+    this.setState({
+      isModalOpen: true
+    }, () => {
+      document.addEventListener('click', this.handleClick);
+    })
+  }
+
+  handleClick = (e) => {
+    if (e.target.className === 'dimmer') {
+      this.closeModal()
+    }
+  }
+
+  closeModal() {
+    this.setState({
+      isModalOpen: false
+    }, () => {
+      document.removeEventListener('click', this.handleClick);
+    })
+  }
+
   render() {
-    const { tab } = this.state;
-    const historyClass = (tab === 'history') ? 'active' : ''
+    const { tab, isModalOpen } = this.state;
+    const historyClass = tab === 'history' ? 'active' : ''
     const loanClass = tab === 'loans' ? 'active' : ''
 
     return (
@@ -31,12 +58,18 @@ export default class Profile extends Component {
           </div>
           {(tab === 'history') ? (
             <div className='tab-content'>
-              <LoanSummary amount={100000} status={'paid'} dueDate={'5 days ago'}/>
-              <LoanSummary amount={100000} status={'paid'} dueDate={'5 days ago'}/>
+              <LoanSummary onSelectLoan={this.openModal} amount={100000} status={'paid'} dueDate={'5 days ago'}/>
+              <LoanSummary onSelectLoan={this.openModal} amount={100000} status={'paid'} dueDate={'5 days ago'}/>
             </div>
           ) : (
-            <div className='tab-content'>AVAILABLE LOANS</div>
+            <div className='tab-content'>
+              <div>Loan offer 1</div>
+              <div>Loan offer 2</div>
+            </div>
           )}
+          {(isModalOpen) ? (
+            <LoanModal />
+          ) : (<div />)}
         </div>
         <div className='side-bar'>
           <Avatar name='Nnamdi Azikwe' score={750} income={10000} expenses={5000}/>

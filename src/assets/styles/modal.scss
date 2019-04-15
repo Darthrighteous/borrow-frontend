@@ -1,0 +1,86 @@
+#modal {
+  position: absolute;
+  top: 0;
+  height: auto;
+  width: 100%;
+
+  .dimmer {
+    background: rgba($color: #000000, $alpha: 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+
+    .modal-content {
+      background: white;
+      border-radius: 0.5em;
+      height: 20em;
+      padding: 1.5em;
+      width: 40em;
+
+      .loan-modal-summary {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        margin: auto;
+        width: 20em;
+
+        .summary-item-ctx {
+          border: 1px solid rgb(189, 189, 189);
+          display: flex;
+          flex-direction: column;
+          padding: 0.5em;
+          text-align: center;
+
+          .value {
+            line-height: 1em;
+          }
+
+          .label {
+            color: hsl(214, 7%, 47%);
+            font-size: 0.5em;
+            text-transform: uppercase;
+          }
+        }
+      }
+
+      .installment-list {
+        margin: 1em 0;
+
+        span {
+          font-size: 1.2em;
+          font-weight: 500;
+          text-transform: uppercase;
+        }
+        .installment-table {
+          font-size: 0.9em;
+          button {
+            border-radius: 0.2em;
+            padding: 0.5em;
+            width: 5em;
+          }
+          th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: grey;
+            color: white;
+          }
+          td, th {
+            width: 10em;
+            padding: 8px;
+          }
+          tr {
+            &:nth-child(even){
+              background-color: #f2f2f2;
+            }
+            &:hover {
+              background-color: #ddd;
+            }
+          }
+        }
+      }
+    }
+  }
+}
