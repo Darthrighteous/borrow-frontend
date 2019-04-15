@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Avatar from '../../components/avatar';
 import LoanSummary from './loansummary';
 import LoanModal from './loanmodal';
+import LoanOffer from './loanoffer';
 
 export default class Profile extends Component {
   constructor(props) {
@@ -57,14 +58,18 @@ export default class Profile extends Component {
             <button className={`tab-btn ${loanClass}`} onClick={this.switchTabs.bind(this, 'loans')}>Available Loans</button>
           </div>
           {(tab === 'history') ? (
-            <div className='tab-content'>
+            <div className='tab-content history'>
               <LoanSummary onSelectLoan={this.openModal} amount={100000} status={'paid'} dueDate={'5 days ago'}/>
               <LoanSummary onSelectLoan={this.openModal} amount={100000} status={'paid'} dueDate={'5 days ago'}/>
             </div>
           ) : (
-            <div className='tab-content'>
-              <div>Loan offer 1</div>
-              <div>Loan offer 2</div>
+            <div className='tab-content offers'>
+              <LoanOffer amount={100000} />
+              <LoanOffer amount={100000} />
+              <LoanOffer amount={100000} />
+              <LoanOffer amount={100000} />
+              <LoanOffer amount={100000} />
+              <LoanOffer amount={100000} />
             </div>
           )}
           {(isModalOpen) ? (

@@ -1,0 +1,49 @@
+$box-shadow: rgba(0, 0, 0, 0.2);
+
+.loan-offer {
+  background: white;
+  border-radius: 0.3em;
+  padding: 1em;
+  margin: 1em;
+  opacity: 0.7;
+  transition: all .2s ease-in-out;
+  width: fit-content;
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  .loan-details {
+    margin: 0.5em;
+
+    .value {
+      font-size: 1.5em;
+      font-weight: 700;
+    }
+
+    .label, .suffix {
+      color: hsl(214, 7%, 47%);
+      font-size: 0.7em;
+      text-transform: uppercase;
+    }
+
+    .suffix {
+      color: hsl(214, 7%, 20%)
+    }
+  }
+
+  .request-btn {
+    background-color: white;
+    border-radius: 0.2em;
+    color: black;
+    cursor: pointer;
+    outline: 0;
+    width: 100%;
+    padding: 0.5em 1em;
+
+    &:hover {
+      box-shadow: 0 1px 2px -1px $box-shadow;
+    }
+  }
+}

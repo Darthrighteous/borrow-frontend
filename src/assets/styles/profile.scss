@@ -18,6 +18,7 @@
         line-height: 1em;
         outline: 0;
         padding: 1em;
+        transition: all .1s ease-in-out;
       }
 
       .active {
@@ -25,7 +26,7 @@
         border-radius: 0.5em 0.5em 0 0;
         color: white;
         font-size: 1em;
-        font-weight: 600;
+        font-weight: 700;
       }
     }
 
@@ -33,15 +34,22 @@
       background: rgb(216, 216, 216);
       padding: 1em;
     }
+
+    .offers {
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
 
   .side-bar {
     .avatar-ctx {
       cursor: default;
+      opacity: 1;
       margin: 1em;
       transition: none;
 
       &:hover {
+        font-size: 1em;
         transform: none;
       }
     }
