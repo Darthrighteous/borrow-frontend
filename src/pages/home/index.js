@@ -5,6 +5,12 @@ import Avatar from '../../components/avatar';
 import { fetchUsers } from '../../actions/userActions';
 
 class Home extends Component {
+  handleSelectUser(id) {
+    const { history } = this.props;
+    localStorage.setItem('user_id', id);
+    history.push('/my-profile');
+  }
+
   componentDidMount() {
     const { fetchUsers } = this.props;
     fetchUsers();
@@ -22,6 +28,8 @@ class Home extends Component {
               users.map((user) => (
                 <Avatar
                 key={user.id}
+                onSelectUser={this.handleSelectUser.bind(this)}
+                id={user.id}
                 name={user.name}
                 score={user.credit_score}
                 income={user.income}

@@ -1,12 +1,16 @@
 import React from 'react';
 
-
 import avatar from '../assets/images/avatar.png';
 
 const Avatar = (props) => {
-  const { name, score, income, expenses } = props
+  const { id, onSelectUser, name, score, income, expenses } = props
+
+  const handleSelect = () => {
+    onSelectUser(id)
+  }
+
   return (
-    <div className="avatar-ctx">
+    <div onClick={handleSelect} className="avatar-ctx">
       <img className='avatar-image' src={avatar} alt='avatar'/>
       <div className='avatar-info'>
         <span className='info-item name'>{name}</span><br />

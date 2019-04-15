@@ -9,7 +9,6 @@ const usersReducer = (state = users, action) => {
   switch (type) {
     case FETCH_USERS:
       return [
-        ...state,
         ...payload.users
       ]
     default:
