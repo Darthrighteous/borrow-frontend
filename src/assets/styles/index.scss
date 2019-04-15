@@ -1,3 +1,5 @@
+@import '../../../node_modules/toastr/build/toastr.css';
+
 @import './header';
 @import './avatar';
 @import './loansummary';
@@ -36,6 +38,23 @@ body {
       width: 100%;
       height: 100%;
       background: rgba(0, 0, 0, 0.8);
+
+      .loader-overlay {
+        background-color: rgba(255, 255, 255, 0.5);
+        font-size: 1.8em;
+        height: 100%;
+        position: fixed;
+        text-align: center;
+        top: 0;
+        width: 100%;
+        z-index: 99;
+
+        i {
+          color: blue;
+          position: relative;
+          top: 45%;
+        }
+      }
     }
 
     .app-ctx {

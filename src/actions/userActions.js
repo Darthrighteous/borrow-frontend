@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-
 import { requestOptions } from '../lib/axios';
+import Toaster from '../lib/toaster';
 import { setLoading } from './appActions'
 import { FETCH_USERS } from './actionTypes';
 
@@ -15,12 +15,15 @@ export const fetchUsers = () => dispatch => {
   const path = `${process.env.REACT_APP_API_BASE_URL}/users`;
   return axios(requestOptions('get', path))
     .then(response => {
-      dispatch(fetchUsersComplete(response.data.users))
+      const { data } = response;
+      Toaster.success(data.message, data.status);
+      console.log(Toaster)
+      dispatch(fetchUsersComplete(data.users))
     })
     .catch((error) => {
 
     })
     .then(() => {
-
+      dispatch(setLoading(false));
     })
 }

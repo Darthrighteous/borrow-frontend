@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import store from './store';
 import Header from './components/header'
+import Loader from './components/loader'
 import Pages from './pages';
 
 const { HomePage, ProfilePage, FourZeroFour } = Pages
@@ -12,6 +13,7 @@ const App = () => (
   <Provider store={store}>
     <Router>
       <div className='overlay'>
+        <Loader />
         <div className="app-ctx">
           <Header />
           <Switch>

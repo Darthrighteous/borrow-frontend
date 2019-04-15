@@ -18,5 +18,4 @@ toastr.options = {
 };
 
 const Toaster = toastr;
-
 export default Toaster;
