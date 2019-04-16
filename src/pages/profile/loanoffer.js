@@ -1,7 +1,8 @@
 import React from 'react';
 
 const LoanOffer = (props) => {
-  const { amount} = props;
+  const { onClickRequest, amount} = props;
+  const userId = localStorage.getItem('user_id')
   return (
     <div className="loan-offer">
       <div className='loan-details'>
@@ -11,7 +12,7 @@ const LoanOffer = (props) => {
           <span className='suffix'>NGN</span>
         </div>
       </div>
-      <button className='request-btn'>Request</button>
+      <button onClick={() => {onClickRequest(userId, amount)}} className='request-btn'>Request</button>
     </div>
   )
 }

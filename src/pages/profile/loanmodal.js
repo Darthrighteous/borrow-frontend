@@ -48,7 +48,7 @@ const modal = (props) => {
                     <td>{install.amount}</td>
                     {(install.status === 'pending') ? (
                       <td><button onClick={() => {onClickPay(userId, install.id, install.amount)}} >pay</button></td>
-                    ): (<td>Already Paid</td>)}
+                    ): (<td>Done</td>)}
                   </tr>
                 ))
               )}

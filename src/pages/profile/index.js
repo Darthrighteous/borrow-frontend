@@ -6,8 +6,7 @@ import Avatar from '../../components/avatar';
 import LoanSummary from './loansummary';
 import LoanModal from './loanmodal';
 import LoanOffer from './loanoffer';
-import { fetchUserInfo } from '../../actions/profileActions';
-import { makePayment } from '../../actions/paymentActions';
+import { fetchUserInfo, makePayment, requestLoan } from '../../actions/profileActions';
 
 class Profile extends Component {
   constructor(props) {
@@ -58,7 +57,7 @@ class Profile extends Component {
 
   render() {
     const { tab, isModalOpen, currentLoanId } = this.state;
-    const { makePayment } = this.props;
+    const { makePayment, requestLoan } = this.props;
     const { info, offers } = this.props.profile;
     const { loans } = info;
     const orderedLoans = loans ? loans.slice().reverse() : []
@@ -94,7 +93,7 @@ class Profile extends Component {
             (offers.length < 1) ? (<div />)
             : <div className='tab-content offers'>
               {(offers.map((offer, i) => (
-                <LoanOffer key={i} amount={offer.amount} />
+                <LoanOffer key={i} onClickRequest={requestLoan} amount={offer.amount} />
                 ))
               )}
               </div>
@@ -117,7 +116,8 @@ const mapStateToProps = state => ({
 
 const mapActionsToProps = {
   fetchUserInfo,
-  makePayment
+  makePayment,
+  requestLoan
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(Profile);
