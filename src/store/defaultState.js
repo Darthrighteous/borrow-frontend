@@ -3,7 +3,10 @@ const defaultState = {
     isLoading: false,
   },
   users: [],
-  user: {}
+  profile: {
+    info: {},
+    offers: []
+  }
 };
 
 export default defaultState;

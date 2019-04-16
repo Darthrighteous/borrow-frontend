@@ -5,7 +5,7 @@ toastr.options = {
   closeButton: true,
   preventDuplicates: true,
   maxOpened: 1,
-  autoDismiss: false,
+  autoDismiss: true,
   extendedTimeout: 0,
   hideDuration: 200,
   closeDuration: 100,

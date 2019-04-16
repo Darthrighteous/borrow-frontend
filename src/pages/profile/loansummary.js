@@ -6,7 +6,7 @@ class LoanSummary extends Component {
   }
 
   render () {
-    const { amount, status, dueDate } = this.props
+    const { amount, dateTaken, dueDate } = this.props
     return (
       <div onClick={this.handleClick} className='loan-summary'>
         <div className='info-block'>
@@ -17,9 +17,9 @@ class LoanSummary extends Component {
           </span>
         </div>
         <div className='info-block'>
-          <span className='info-item label'>status</span>
-          <span className='info-item status'>
-            {status}
+          <span className='info-item label'>date taken</span>
+          <span className='info-item date-taken'>
+            {dateTaken}
           </span>
         </div>
         <div className='info-block'>

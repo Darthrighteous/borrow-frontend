@@ -1,26 +1,28 @@
 import React from 'react';
 import ReactDOM from "react-dom";
+import moment from 'moment';
 
 const modal = (props) => {
+  const { loan } = props
   return (
     <div className='dimmer'>
       <div className='modal-content'>
         <div className="loan-modal-summary">
           <div className='summary-item-ctx principal'>
             <span className='label'>principal</span>
-            <span className='value'>principal</span>
+            <span className='value'>{loan.amount}</span>
           </div>
           <div className='summary-item-ctx interest'>
             <span className='label'>interest</span>
-            <span className='value'>principal</span>
+            <span className='value'>{loan.interest_rate}</span>
           </div>
           <div className='summary-item-ctx total'>
             <span className='label'>total</span>
-            <span className='value'>principal</span>
+            <span className='value'>{loan.amount + loan.interest_rate}</span>
           </div>
           <div className='summary-item-ctx rate'>
             <span className='label'>rate</span>
-            <span className='value'>principal</span>
+            <span className='value'>{(loan.interest_rate/loan.amount * 100).toFixed(2)}%</span>
           </div>
         </div>
         <div className='installment-list'>
@@ -34,13 +36,18 @@ const modal = (props) => {
                 <th>Amount</th>
                 <th>Action</th>
               </tr>
-              <tr>
-                <td>Today</td>
-                <td>1/4</td>
-                <td>paid</td>
-                <td>10000</td>
-                <td><button>pay</button></td>
-              </tr>
+              {(loan.installments.length < 1) ? <div />
+              : (
+                loan.installments.map((install, i) => (
+                  <tr key={install.id}>
+                    <td>{moment(install.due_date).format('DD/MM/YYYY, hh:mma')}</td>
+                    <td>{i + 1}/4</td>
+                    <td>{install.status}</td>
+                    <td>{install.amount}</td>
+                    <td><button>pay</button></td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>

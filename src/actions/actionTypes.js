@@ -1,3 +1,5 @@
 export const SET_LOADING = 'SET_LOADING';
 
 export const FETCH_USERS = 'FETCH_USERS';
+
+export const FETCH_USER_DETAILS = 'FETCH_USER_DETAILS';

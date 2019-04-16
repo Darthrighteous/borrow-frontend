@@ -10,20 +10,17 @@ const fetchUsersComplete = users => ({
   payload: { users }
 })
 
-export const fetchUsers = () => dispatch => {
+export const fetchUsers = () => async dispatch => {
   dispatch(setLoading(true));
   const path = `${process.env.REACT_APP_API_BASE_URL}/users`;
-  return axios(requestOptions('get', path))
-    .then(response => {
-      const { data } = response;
-      Toaster.success(data.message, data.status);
-      console.log(Toaster)
-      dispatch(fetchUsersComplete(data.users))
-    })
-    .catch((error) => {
-
-    })
-    .then(() => {
-      dispatch(setLoading(false));
-    })
+  try {
+    let response = await axios(requestOptions('get', path));
+    const { data } = response;
+    Toaster.success(data.message, data.status);
+    dispatch(fetchUsersComplete(data.users));
+  }
+  catch (error) {
+    Toaster.error(error.message, 'Failure');
+   }
+  dispatch(setLoading(false));
 }

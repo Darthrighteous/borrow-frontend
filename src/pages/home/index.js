@@ -45,7 +45,7 @@ class Home extends Component {
 
 const mapStateToProps = state => ({
   users: state.users
-})
+});
 
 const mapActionsToProps = {
   fetchUsers

@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import moment from 'moment';
 
 import Avatar from '../../components/avatar';
 import LoanSummary from './loansummary';
 import LoanModal from './loanmodal';
 import LoanOffer from './loanoffer';
+import { fetchUserInfo } from '../../actions/profileActions';
 
-export default class Profile extends Component {
+class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
       tab: 'history',
-      isModalOpen: false
+      isModalOpen: false,
+      currentLoanId: ''
     };
 
     this.openModal = this.openModal.bind(this);
@@ -23,9 +27,10 @@ export default class Profile extends Component {
     })
   }
 
-  openModal() {
+  openModal(id) {
     this.setState({
-      isModalOpen: true
+      isModalOpen: true,
+      currentLoanId: id
     }, () => {
       document.addEventListener('click', this.handleClick);
     })
@@ -45,8 +50,17 @@ export default class Profile extends Component {
     })
   }
 
+   componentDidMount () {
+     const { fetchUserInfo } = this.props;
+     fetchUserInfo(localStorage.getItem('user_id'));
+   }
+
   render() {
-    const { tab, isModalOpen } = this.state;
+    const { tab, isModalOpen, currentLoanId } = this.state;
+    const { info, offers } = this.props.profile;
+    const { loans } = info;
+    const currentLoan = loans ? loans.find((loan) => (loan.id === currentLoanId)) : {}
+
     const historyClass = tab === 'history' ? 'active' : ''
     const loanClass = tab === 'loans' ? 'active' : ''
 
@@ -59,27 +73,47 @@ export default class Profile extends Component {
           </div>
           {(tab === 'history') ? (
             <div className='tab-content history'>
-              <LoanSummary onSelectLoan={this.openModal} amount={100000} status={'paid'} dueDate={'5 days ago'}/>
-              <LoanSummary onSelectLoan={this.openModal} amount={100000} status={'paid'} dueDate={'5 days ago'}/>
+              {(!loans) ? (<div />)
+                : (info.loans.reverse().map((loan) => {
+                  return (
+                    <LoanSummary
+                      key={loan.id}
+                      id={loan.id}
+                      onSelectLoan={this.openModal}
+                      amount={loan.amount}
+                      dateTaken={moment(loan.created_at).fromNow()}
+                      dueDate={moment(loan.created_at).add(28, 'days').format('DD/MM/YYYY, hh:mma')} />
+                    )})
+                  )
+              }
             </div>
           ) : (
-            <div className='tab-content offers'>
-              <LoanOffer amount={100000} />
-              <LoanOffer amount={100000} />
-              <LoanOffer amount={100000} />
-              <LoanOffer amount={100000} />
-              <LoanOffer amount={100000} />
-              <LoanOffer amount={100000} />
-            </div>
+            (offers.length < 1) ? (<div />)
+            : <div className='tab-content offers'>
+              {(offers.map((offer, i) => (
+                <LoanOffer key={i} amount={offer.amount} />
+                ))
+              )}
+              </div>
           )}
           {(isModalOpen) ? (
-            <LoanModal />
+            <LoanModal id={currentLoanId} loan={currentLoan} />
           ) : (<div />)}
         </div>
         <div className='side-bar'>
-          <Avatar name='Nnamdi Azikwe' score={750} income={10000} expenses={5000}/>
+          <Avatar onSelectUser={() => {}} name={info.name} score={info.credit_score} income={info.income} expenses={info.expenses}/>
         </div>
       </div>
     )
   }
 }
+
+const mapStateToProps = state => ({
+  profile: state.profile
+});
+
+const mapActionsToProps = {
+  fetchUserInfo
+};
+
+export default connect(mapStateToProps, mapActionsToProps)(Profile);
