@@ -15,7 +15,6 @@ export const fetchUserInfo = (id) => async dispatch => {
   const path = `${process.env.REACT_APP_API_BASE_URL}/my-profile`;
   try {
     let response = await axios(requestOptions('get', path, null, `Token token=${id}`));
-    console.log(response)
     const { data } = response;
     Toaster.success(data.message, data.status);
     dispatch(fetchUserComplete(data.profile_info, data.loan_offers));

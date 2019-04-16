@@ -3,7 +3,9 @@ import ReactDOM from "react-dom";
 import moment from 'moment';
 
 const modal = (props) => {
-  const { loan } = props
+  const { loan, onClickPay } = props;
+  const userId = localStorage.getItem('user_id');
+
   return (
     <div className='dimmer'>
       <div className='modal-content'>
@@ -44,7 +46,9 @@ const modal = (props) => {
                     <td>{i + 1}/4</td>
                     <td>{install.status}</td>
                     <td>{install.amount}</td>
-                    <td><button>pay</button></td>
+                    {(install.status === 'pending') ? (
+                      <td><button onClick={() => {onClickPay(userId, install.id, install.amount)}} >pay</button></td>
+                    ): (<td>Already Paid</td>)}
                   </tr>
                 ))
               )}
